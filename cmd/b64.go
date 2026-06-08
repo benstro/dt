@@ -2,8 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	"io"
-	"os"
 
 	"github.com/benstro/dt/internal/b64"
 	"github.com/spf13/cobra"
@@ -44,21 +42,6 @@ var b64DecodeCmd = &cobra.Command{
 		fmt.Println(result)
 		return nil
 	},
-}
-
-func resolveInput(args []string) (string, error) {
-	if len(args) == 1 {
-		return args[0], nil
-	}
-	stat, _ := os.Stdin.Stat()
-	if (stat.Mode() & os.ModeCharDevice) == 0 {
-		data, err := io.ReadAll(os.Stdin)
-		if err != nil {
-			return "", fmt.Errorf("reading stdin: %w", err)
-		}
-		return string(data), nil
-	}
-	return "", fmt.Errorf("provide input as an argument or via stdin")
 }
 
 func init() {

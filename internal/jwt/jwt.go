@@ -1,3 +1,4 @@
+// Package jwt provides JWT decoding.
 package jwt
 
 import (

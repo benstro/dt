@@ -24,4 +24,4 @@ Tool that generates a single random UUID v4.
 Tool for JSON manipulation. Operations: `pretty` (format with indentation), `minify` (strip whitespace), `stringify` (escape a JSON value into a JSON string literal).
 
 **hash**
-Tool for hashing input text. Planned — not yet implemented.
+Tool for hashing input. Operation: `sha256` — hashes a string, a single file (`--file <path>`), or multiple files as positional args (hashed concurrently). File output format: `<hash>  <path>` (matches `sha256sum`). Accepts string input from stdin.

@@ -1,3 +1,4 @@
+// Package json provides JSON formatting utilities.
 package json
 
 import (

@@ -25,10 +25,10 @@ go mod tidy             # sync go.mod/go.sum after adding/removing dependencies
 
 **Two-level command structure:** top-level tools (`b64`, `jwt`, `json`) have subcommand operations (`encode`/`decode`, `pretty`/`minify`/`stringify`). Single-purpose tools (`uuid`) run directly with no subcommand.
 
-**Input resolution:** `b64` accepts input as a CLI argument or from stdin (pipe). The `resolveInput` helper in `cmd/b64.go` handles this by checking `os.ModeCharDevice` on stdin's stat — use this pattern for any tool that should support piped input.
+**Input resolution:** tools accept input as a CLI argument or from stdin (pipe). The `resolveInput` helper in `cmd/input.go` handles this by checking `os.ModeCharDevice` on stdin's stat — use this pattern for any tool that should support piped input.
 
 ## Domain
 
 See `CONTEXT.md` for the glossary of terms (Tool, Operation, etc.) used throughout this project.
 
-The `hash` tool is planned but intentionally unimplemented — the user is building it to learn Go.
+The `hash` tool (`hash sha256`) hashes a string, a single file (`--file <path>`), or multiple files (positional args, hashed in parallel with goroutines). Output for files is `<hash>  <path>`, matching `sha256sum` convention.

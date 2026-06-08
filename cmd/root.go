@@ -1,3 +1,4 @@
+// Package cmd implements the dt CLI commands.
 package cmd
 
 import (
